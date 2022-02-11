@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Calcum v2.0</string>
+    <string name="BtnNumber0">0</string>
+    <string name="BtnNumber1">1</string>
+    <string name="BtnNumber2">2</string>
+    <string name="BtnNumber3">3</string>
+    <string name="BtnNumber4">4</string>
+    <string name="BtnNumber5">5</string>
+    <string name="BtnNumber6">6</string>
+    <string name="BtnNumber7">7</string>
+    <string name="BtnNumber8">8</string>
+    <string name="BtnNumber9">9</string>
+    <string name="BtnAddition">+</string>
+    <string name="BtnSubtraction">-</string>
+    <string name="BtnMultiplication">×</string>
+    <string name="BtnDivision">÷</string>
+    <string name="BtnEnter">=</string>
+    <string name="BtnDecimal">.</string>
+    <string name="BtnOpen">(</string>
+    <string name="BtnClose">)</string>
+    <string name="BtnClear">C</string>
+    <string name="BtnSecondaryOperations">2ND</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
