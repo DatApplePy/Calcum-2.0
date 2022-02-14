@@ -39,3 +39,7 @@ public class MainFunctions extends Fragment {
         super.onStart();
     }
 }
+
+//TODO: initialize buttons
+//TODO: make buttons working
+//of course properly :P
