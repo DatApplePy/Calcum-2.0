@@ -1,27 +1,44 @@
 package com.example.calcumv20.Model;
 
+import android.util.Log;
+
 import com.example.calcumv20.Util.Observable;
 import com.example.calcumv20.Util.Observer;
 
 import java.util.ArrayList;
 
+//TODO: business logic
+//TODO: rebuild data structure
 public class Model implements Observable {
 
-    private ArrayList<Observer> observerList;
-    private StringBuilder data;
+    private final ArrayList<Observer> observerList;
+    private final StringBuffer data;
 
     public Model() {
         observerList = new ArrayList<>();
-        data = new StringBuilder();
+        data = new StringBuffer();
     }
 
-    public void receiveData(String data) {
+    public void putData(String data) {
         this.data.append(data);
         notifyObservers();
     }
 
     public String getData() {
         return data.toString();
+    }
+
+    public void deleteLastChar() {
+        if(data.length() > 0) {
+            data.deleteCharAt(data.length() - 1);
+            notifyObservers();
+        } else {
+            Log.d("IndexOutOfBound","StringBuffer is empty");
+        }
+    }
+
+    public void evaluate() {
+        //TODO: implement this
     }
 
     @Override
@@ -42,5 +59,4 @@ public class Model implements Observable {
     }
 }
 
-//TODO: better name for methods
-//TODO: Business logic
+

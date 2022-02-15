@@ -18,8 +18,13 @@
     <string name="BtnDecimal">.</string>
     <string name="BtnOpen">(</string>
     <string name="BtnClose">)</string>
-    <string name="BtnClear">C</string>
-    <string name="BtnSecondaryOperations">2ND</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="BtnClear">c</string>
+    <string name="BtnSecondaryOperations">2nd</string>
+    <string name="BtnSine">sin</string>
+    <string name="BtnCosine">cos</string>
+    <string name="BtnTangent">tan</string>
+    <string name="BtnPower">x<sup>y</sup></string>
+    <string name="BtnSqrt">\u221ax</string>
+    <string name="BtnLogarithm">log</string>
+    <string name="BtnBackToMain">BACK</string>
 </resources>
