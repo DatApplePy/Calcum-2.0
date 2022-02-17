@@ -16,7 +16,7 @@
         android:text="@string/BtnSine"
         android:textSize="40sp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnPower"
+        app:layout_constraintBottom_toTopOf="@+id/BtnExponention"
         app:layout_constraintEnd_toStartOf="@id/BtnCosine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,12 +50,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/BtnPower"
+        android:id="@+id/BtnExponention"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="@string/BtnPower"
+        android:text="@string/BtnExponention"
         android:textSize="40sp"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@id/BtnBackToMain"
@@ -74,7 +74,7 @@
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toTopOf="@id/BtnBackToMain"
         app:layout_constraintEnd_toStartOf="@id/BtnLogarithm"
-        app:layout_constraintStart_toEndOf="@+id/BtnPower"
+        app:layout_constraintStart_toEndOf="@+id/BtnExponention"
         app:layout_constraintTop_toBottomOf="@+id/BtnCosine" />
 
     <Button

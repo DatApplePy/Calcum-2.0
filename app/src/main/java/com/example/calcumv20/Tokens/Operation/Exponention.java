@@ -1,6 +1,6 @@
 package com.example.calcumv20.Tokens.Operation;
 
-public class Exponential extends Operation{
+public class Exponention extends Operation{
     @Override
     public int priority() {
         return 3;

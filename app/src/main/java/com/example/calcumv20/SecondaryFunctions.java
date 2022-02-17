@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import com.example.calcumv20.Util.OnButtonPass;
 
@@ -33,13 +32,13 @@ public class SecondaryFunctions extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ((Button)view.findViewById(R.id.BtnSine)).setOnClickListener(v -> passButtonToHost(R.id.BtnSine));
-        ((Button)view.findViewById(R.id.BtnCosine)).setOnClickListener(v -> passButtonToHost(R.id.BtnCosine));
-        ((Button)view.findViewById(R.id.BtnTangent)).setOnClickListener(v -> passButtonToHost(R.id.BtnTangent));
-        ((Button)view.findViewById(R.id.BtnPower)).setOnClickListener(v -> passButtonToHost(R.id.BtnPower));
-        ((Button)view.findViewById(R.id.BtnSqrt)).setOnClickListener(v -> passButtonToHost(R.id.BtnSqrt));
-        ((Button)view.findViewById(R.id.BtnLogarithm)).setOnClickListener(v -> passButtonToHost(R.id.BtnLogarithm));
-        ((Button)view.findViewById(R.id.BtnBackToMain)).setOnClickListener(v -> passButtonToHost(R.id.BtnBackToMain));
+        view.findViewById(R.id.BtnSine).setOnClickListener(v -> passButtonToHost(R.id.BtnSine));
+        view.findViewById(R.id.BtnCosine).setOnClickListener(v -> passButtonToHost(R.id.BtnCosine));
+        view.findViewById(R.id.BtnTangent).setOnClickListener(v -> passButtonToHost(R.id.BtnTangent));
+        view.findViewById(R.id.BtnExponention).setOnClickListener(v -> passButtonToHost(R.id.BtnExponention));
+        view.findViewById(R.id.BtnSqrt).setOnClickListener(v -> passButtonToHost(R.id.BtnSqrt));
+        view.findViewById(R.id.BtnLogarithm).setOnClickListener(v -> passButtonToHost(R.id.BtnLogarithm));
+        view.findViewById(R.id.BtnBackToMain).setOnClickListener(v -> passButtonToHost(R.id.BtnBackToMain));
     }
 
     private void passButtonToHost(int id) {

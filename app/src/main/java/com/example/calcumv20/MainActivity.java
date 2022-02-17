@@ -33,40 +33,42 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, Obs
     @Override
     public void passButtonId(int buttonId) {
         switch(buttonId) {
-            case R.id.BtnNumber0: model.putData("0"); break;
-            case R.id.BtnNumber1: model.putData("1"); break;
-            case R.id.BtnNumber2: model.putData("2"); break;
-            case R.id.BtnNumber3: model.putData("3"); break;
-            case R.id.BtnNumber4: model.putData("4"); break;
-            case R.id.BtnNumber5: model.putData("5"); break;
-            case R.id.BtnNumber6: model.putData("6"); break;
-            case R.id.BtnNumber7: model.putData("7"); break;
-            case R.id.BtnNumber8: model.putData("8"); break;
-            case R.id.BtnNumber9: model.putData("9"); break;
-            case R.id.BtnDecimal: model.putData("."); break;
-            case R.id.BtnAddition: model.putData("+"); break;
-            case R.id.BtnSubtraction: model.putData("-"); break;
-            case R.id.BtnMultiplication: model.putData("×"); break;
-            case R.id.BtnDivision: model.putData("÷"); break;
+            case R.id.BtnNumber0: model.addInput("0"); break;
+            case R.id.BtnNumber1: model.addInput("1"); break;
+            case R.id.BtnNumber2: model.addInput("2"); break;
+            case R.id.BtnNumber3: model.addInput("3"); break;
+            case R.id.BtnNumber4: model.addInput("4"); break;
+            case R.id.BtnNumber5: model.addInput("5"); break;
+            case R.id.BtnNumber6: model.addInput("6"); break;
+            case R.id.BtnNumber7: model.addInput("7"); break;
+            case R.id.BtnNumber8: model.addInput("8"); break;
+            case R.id.BtnNumber9: model.addInput("9"); break;
+            case R.id.BtnDecimal: model.addInput("."); break;
+            case R.id.BtnAddition: model.addInput("+"); break;
+            case R.id.BtnSubtraction: model.addInput("-"); break;
+            case R.id.BtnMultiplication: model.addInput("×"); break;
+            case R.id.BtnDivision: model.addInput("÷"); break;
             case R.id.BtnEnter: model.evaluate(); break;
-            case R.id.BtnOpen: model.putData("("); break;
-            case R.id.BtnClose: model.putData(")"); break;
+            case R.id.BtnOpen: model.addInput("("); break;
+            case R.id.BtnClose: model.addInput(")"); break;
             case R.id.BtnClear: model.deleteLastChar(); break;
-            case R.id.BtnSecondaryOperations: getSupportFragmentManager().beginTransaction().replace(R.id.FragView, secondaryFunctions).commit(); break;
+            case R.id.BtnSecondaryOperations: getSupportFragmentManager().beginTransaction().
+                    replace(R.id.FragView, secondaryFunctions).commit(); break;
 
             //TODO: fine-tuning input goes to model
-            case R.id.BtnSine: model.putData("sin("); break;
-            case R.id.BtnCosine: model.putData("cos("); break;
-            case R.id.BtnTangent: model.putData("tan("); break;
-            case R.id.BtnPower: model.putData("^"); break;
-            case R.id.BtnSqrt: model.putData("\u221A"); break;
-            case R.id.BtnLogarithm: model.putData("log("); break;
-            case R.id.BtnBackToMain: getSupportFragmentManager().beginTransaction().replace(R.id.FragView, mainFunctions).commit(); break;
+            case R.id.BtnSine: model.addInput("sin("); break;
+            case R.id.BtnCosine: model.addInput("cos("); break;
+            case R.id.BtnTangent: model.addInput("tan("); break;
+            case R.id.BtnExponention: model.addInput("^"); break;
+            case R.id.BtnSqrt: model.addInput("\u221A"); break;
+            case R.id.BtnLogarithm: model.addInput("log("); break;
+            case R.id.BtnBackToMain: getSupportFragmentManager().beginTransaction().
+                    replace(R.id.FragView, mainFunctions).commit(); break;
         }
     }
 
     @Override
     public void update() {
-        inputOutputFeedbackTextView.setText(model.getData());
+        inputOutputFeedbackTextView.setText(model.getOutput());
     }
 }

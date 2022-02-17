@@ -23,7 +23,7 @@
     <string name="BtnSine">sin</string>
     <string name="BtnCosine">cos</string>
     <string name="BtnTangent">tan</string>
-    <string name="BtnPower">x<sup>y</sup></string>
+    <string name="BtnExponention">x<sup>y</sup></string>
     <string name="BtnSqrt">\u221ax</string>
     <string name="BtnLogarithm">log</string>
     <string name="BtnBackToMain">BACK</string>

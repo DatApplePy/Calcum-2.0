@@ -8,39 +8,51 @@ import com.example.calcumv20.Util.Observer;
 import java.util.ArrayList;
 
 //TODO: business logic
-//TODO: rebuild data structure
 public class Model implements Observable {
 
     private final ArrayList<Observer> observerList;
-    private final StringBuffer data;
+    private final ArrayList<String> input; //edited by user actions
+    private String output; //sent back to view and used for evaluation
 
     public Model() {
         observerList = new ArrayList<>();
-        data = new StringBuffer();
-    }
-
-    public void putData(String data) {
-        this.data.append(data);
-        notifyObservers();
-    }
-
-    public String getData() {
-        return data.toString();
-    }
-
-    public void deleteLastChar() {
-        if(data.length() > 0) {
-            data.deleteCharAt(data.length() - 1);
-            notifyObservers();
-        } else {
-            Log.d("IndexOutOfBound","StringBuffer is empty");
-        }
+        input = new ArrayList<>();
+        output = "";
     }
 
     public void evaluate() {
         //TODO: implement this
     }
 
+    //IO section
+    public void addInput(String data) {
+        this.input.add(data);
+        convertArrayListToString();
+        notifyObservers();
+    }
+
+    public void deleteLastChar() {
+        if(!input.isEmpty()) {
+            input.remove(input.size() - 1);
+            convertArrayListToString();
+            notifyObservers();
+        }
+        Log.d("DeleteFromInput", !input.isEmpty() ? "OK" : "Input is empty");
+    }
+
+    public String getOutput() {
+        return output;
+    }
+
+    private void convertArrayListToString() {
+        StringBuilder res = new StringBuilder();
+        for(String item : input) {
+            res.append(item);
+        }
+        output = res.toString();
+    }
+
+    //Observer section
     @Override
     public void addObserver(Observer observer) {
         observerList.add(observer);
