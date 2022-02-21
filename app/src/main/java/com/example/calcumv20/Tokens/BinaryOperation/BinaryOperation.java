@@ -1,11 +1,11 @@
-package com.example.calcumv20.Tokens.Operation;
+package com.example.calcumv20.Tokens.BinaryOperation;
 
 import com.example.calcumv20.Tokens.Token;
 import com.example.calcumv20.Tokens.TokenType;
 
-public abstract class Operation extends Token {
-    protected Operation() {
-        super(TokenType.OPERATION);
+public abstract class BinaryOperation extends Token {
+    protected BinaryOperation() {
+        super(TokenType.BINARY_OPERATION);
     }
 
     abstract int priority();

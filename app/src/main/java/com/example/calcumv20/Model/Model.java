@@ -1,7 +1,5 @@
 package com.example.calcumv20.Model;
 
-import android.util.Log;
-
 import com.example.calcumv20.Util.Observable;
 import com.example.calcumv20.Util.Observer;
 
@@ -11,13 +9,11 @@ import java.util.ArrayList;
 public class Model implements Observable {
 
     private final ArrayList<Observer> observerList;
-    private final ArrayList<String> input; //edited by user actions
-    private String output; //sent back to view and used for evaluation
+    private final ArrayList<String> expression;
 
     public Model() {
         observerList = new ArrayList<>();
-        input = new ArrayList<>();
-        output = "";
+        expression = new ArrayList<>();
     }
 
     public void evaluate() {
@@ -26,30 +22,27 @@ public class Model implements Observable {
 
     //IO section
     public void addInput(String data) {
-        this.input.add(data);
-        convertArrayListToString();
+        this.expression.add(data);
         notifyObservers();
     }
 
     public void deleteLastChar() {
-        if(!input.isEmpty()) {
-            input.remove(input.size() - 1);
-            convertArrayListToString();
+        if(!expression.isEmpty()) {
+            expression.remove(expression.size() - 1);
             notifyObservers();
         }
-        Log.d("DeleteFromInput", !input.isEmpty() ? "OK" : "Input is empty");
     }
 
     public String getOutput() {
-        return output;
+        return convertArrayListToString();
     }
 
-    private void convertArrayListToString() {
+    private String convertArrayListToString() {
         StringBuilder res = new StringBuilder();
-        for(String item : input) {
+        for(String item : expression) {
             res.append(item);
         }
-        output = res.toString();
+        return res.toString();
     }
 
     //Observer section

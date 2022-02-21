@@ -1,5 +1,7 @@
 package com.example.calcumv20.Tokens.Operand;
 
+import androidx.annotation.NonNull;
+
 import com.example.calcumv20.Tokens.*;
 
 public class Operand extends Token {
@@ -12,5 +14,11 @@ public class Operand extends Token {
 
     public float getValue() {
         return value;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return Float.toString(value);
     }
 }
