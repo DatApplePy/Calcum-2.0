@@ -10,6 +10,7 @@ public class Division extends BinaryOperation {
 
     @Override
     public double evaluate(double firstOperand, double secondOperand) {
+        if (secondOperand == 0) throw new ArithmeticException();
         return firstOperand / secondOperand;
     }
 

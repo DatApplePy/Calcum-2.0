@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 public class Logarithm extends UnaryOperation {
     @Override
-    double evaluate(double operand) {
+    public double evaluate(double operand) {
         return Math.log10(operand);
     }
 

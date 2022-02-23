@@ -4,6 +4,7 @@ import com.example.calcumv20.Tokens.BinaryOperation.*;
 import com.example.calcumv20.Tokens.Operand.Operand;
 import com.example.calcumv20.Tokens.Parenthesis.*;
 import com.example.calcumv20.Tokens.Token;
+import com.example.calcumv20.Tokens.TokenType;
 import com.example.calcumv20.Tokens.UnaryOperation.*;
 
 import java.util.ArrayList;
@@ -17,24 +18,28 @@ public class Tokenizer {
         tokens = new ArrayList<>();
     }
 
-    public ArrayList<Token> tokenize(String arithmeticExpression) {
-        int i = 0;
-        int end = arithmeticExpression.length();
+    public ArrayList<Token> tokenize(String infixExpression)
+            throws NumberFormatException {
+        int end = infixExpression.length();
         char currentChar;
-        while (i < end) {
-            currentChar = arithmeticExpression.charAt(i);
-            if(isNumber(currentChar)) {
+        for (int i = 0; i < end;) {
+            currentChar = infixExpression.charAt(i);
+            // numbers
+            if (isNumber(currentChar)) {
                 do {
-                    multiCharBuffer.append(arithmeticExpression.charAt(i));
+                    multiCharBuffer.append(infixExpression.charAt(i));
                     i++;
-                } while(i < end && isNumber(arithmeticExpression.charAt(i)));
-                tokens.add(new Operand(Float.parseFloat(getBuffer())));
+                } while (i < end && isNumber(infixExpression.charAt(i)));
+                tokens.add(new Operand(Double.parseDouble(getBuffer())));
                 clearBuffer();
-            } else if(isLetter(currentChar)) {
+            }
+            // functions (sin, cos, etc...)
+            else if (isLetter(currentChar)) {
                 do {
-                    multiCharBuffer.append(arithmeticExpression.charAt(i));
+                    multiCharBuffer.append(infixExpression.charAt(i));
                     i++;
-                } while(i < end && isLetter(arithmeticExpression.charAt(i)));
+                } while (i < end && isLetter(infixExpression.charAt(i)));
+                ImpliedMultiplication();
                 switch (getBuffer()) {
                     case "sin" : tokens.add(new Sine()); break;
                     case "cos" : tokens.add(new Cosine()); break;
@@ -42,20 +47,40 @@ public class Tokenizer {
                     case "log" : tokens.add(new Logarithm()); break;
                 }
                 clearBuffer();
-            } else if(isParenthesis(currentChar)) {
-                switch(currentChar) {
-                    case '(' : tokens.add(new OpenParenthesis()); break;
+            }
+            // parentheses
+            else if (isParenthesis(currentChar)) {
+                switch (currentChar) {
+                    case '(' : {
+                        ImpliedMultiplication();
+                        tokens.add(new OpenParenthesis());
+                        break;
+                    }
                     case ')' : tokens.add(new CloseParenthesis()); break;
                 }
                 i++;
-            } else if(isOperation(currentChar)) {
-                switch(currentChar) {
-                    case '+' : tokens.add(new Addition()); break;
-                    case '-' : tokens.add(new Subtraction()); break;
-                    case '×' : tokens.add(new Multiplication()); break;
-                    case '÷' : tokens.add(new Division()); break;
-                    case '^' : tokens.add(new Exponention()); break;
-                    case '\u221A' : tokens.add(new SquareRoot()); break;
+            }
+            // operations (+, -, etc...)
+            else if (isOperation(currentChar)) {
+                switch (currentChar) {
+                    case '+': tokens.add(new Addition()); break;
+                    case '-': {
+                        if (tokens.isEmpty() || (!lastToken().getType().equals(TokenType.CLOSE) &&
+                                !lastToken().getType().equals(TokenType.OPERAND))) {
+                            tokens.add(new Negation());
+                        } else {
+                            tokens.add(new Subtraction());
+                        }
+                        break;
+                    }
+                    case '×': tokens.add(new Multiplication()); break;
+                    case '÷': tokens.add(new Division()); break;
+                    case '^': tokens.add(new Exponention()); break;
+                    case '\u221A': {
+                        ImpliedMultiplication();
+                        tokens.add(new SquareRoot());
+                        break;
+                    }
                 }
                 i++;
             }
@@ -66,19 +91,35 @@ public class Tokenizer {
     private boolean isNumber(char ch) {
         return Character.isDigit(ch) || ch == '.';
     }
+
     private boolean isLetter(char ch) {
         return Character.isLetter(ch);
     }
+
     private boolean isParenthesis(char ch) {
         return Character.toString(ch).matches("[()]");
     }
+
     private boolean isOperation(char ch) {
         return Character.toString(ch).matches("[+\\-×÷^\u221A]");
     }
+
     private String getBuffer() {
         return multiCharBuffer.toString();
     }
+
     private void clearBuffer() {
         multiCharBuffer.delete(0, multiCharBuffer.length());
+    }
+
+    private Token lastToken() {
+        return tokens.get(tokens.size()-1);
+    }
+
+    private void ImpliedMultiplication() {
+        if(!tokens.isEmpty() && (lastToken().getType().equals(TokenType.OPERAND) ||
+                lastToken().getType().equals(TokenType.CLOSE))) {
+            tokens.add(new Multiplication());
+        }
     }
 }

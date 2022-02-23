@@ -4,7 +4,8 @@ import androidx.annotation.NonNull;
 
 public class SquareRoot extends UnaryOperation{
     @Override
-    double evaluate(double operand) {
+    public double evaluate(double operand) {
+        if(operand < 0) throw new ArithmeticException();
         return Math.sqrt(operand);
     }
 

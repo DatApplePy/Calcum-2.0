@@ -8,6 +8,6 @@ public abstract class BinaryOperation extends Token {
         super(TokenType.BINARY_OPERATION);
     }
 
-    abstract int priority();
-    abstract double evaluate(double firstOperand, double secondOperand);
+    public abstract int priority();
+    public abstract double evaluate(double firstOperand, double secondOperand);
 }

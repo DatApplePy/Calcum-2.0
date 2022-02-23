@@ -1,23 +1,45 @@
 package com.example.calcumv20.Model;
 
+import com.example.calcumv20.Tokens.Token;
+import com.example.calcumv20.Util.Evaluator;
 import com.example.calcumv20.Util.Observable;
 import com.example.calcumv20.Util.Observer;
+import com.example.calcumv20.Util.ReversePolishNotation;
+import com.example.calcumv20.Util.Tokenizer;
 
 import java.util.ArrayList;
+import java.util.EmptyStackException;
 
-//TODO: business logic
 public class Model implements Observable {
 
     private final ArrayList<Observer> observerList;
-    private final ArrayList<String> expression;
+    private ArrayList<String> expression;
 
     public Model() {
         observerList = new ArrayList<>();
         expression = new ArrayList<>();
     }
 
-    public void evaluate() {
-        //TODO: implement this
+    public void solve() {
+        try {
+            Tokenizer tokenizer = new Tokenizer();
+            ReversePolishNotation rpn = new ReversePolishNotation();
+            Evaluator evaluator = new Evaluator();
+            String result;
+
+            ArrayList<Token> res = tokenizer.tokenize(convertArrayListToString(expression));
+            res = rpn.convertInfixToPostfix(res);
+            result = evaluator.evaluate(res);
+
+            expression = convertStringToArrayList(result);
+        } catch (NumberFormatException|ClassCastException|EmptyStackException e) {
+            expression.clear();
+            expression.add("Syntax error");
+        } catch (ArithmeticException e) {
+            expression.clear();
+            expression.add("Math error");
+        }
+        notifyObservers();
     }
 
     //IO section
@@ -34,15 +56,31 @@ public class Model implements Observable {
     }
 
     public String getOutput() {
-        return convertArrayListToString();
+        return convertArrayListToString(expression);
     }
 
-    private String convertArrayListToString() {
+    /**
+     * Converts ArrayList contains Strings to a contiguous String to
+     * send it to the output or pass to the tokenizer.
+     */
+    private String convertArrayListToString(ArrayList<String> expression) {
         StringBuilder res = new StringBuilder();
         for(String item : expression) {
             res.append(item);
         }
         return res.toString();
+    }
+
+    /**
+     * Takes the characters of the input String one by one and puts them in an ArrayList
+     * as Strings to make it editable for additional advanced calculations.
+     */
+    private ArrayList<String> convertStringToArrayList(String str) {
+        ArrayList<String> res = new ArrayList<>();
+        for(Character ch : str.toCharArray()) {
+            res.add(ch.toString());
+        }
+        return res;
     }
 
     //Observer section

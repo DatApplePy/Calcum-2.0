@@ -9,5 +9,5 @@ public abstract class UnaryOperation extends Token {
         super(TokenType.UNARY_OPERATION);
     }
 
-    abstract double evaluate(double operand);
+    public abstract double evaluate(double operand);
 }

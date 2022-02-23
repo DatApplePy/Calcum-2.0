@@ -5,20 +5,20 @@ import androidx.annotation.NonNull;
 import com.example.calcumv20.Tokens.*;
 
 public class Operand extends Token {
-    private float value;
+    private double value;
 
-    public Operand(float value) {
+    public Operand(double value) {
         super(TokenType.OPERAND);
         this.value = value;
     }
 
-    public float getValue() {
+    public double getValue() {
         return value;
     }
 
     @NonNull
     @Override
     public String toString() {
-        return Float.toString(value);
+        return Double.toString(value);
     }
 }

@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, Obs
             case R.id.BtnSubtraction: model.addInput("-"); break;
             case R.id.BtnMultiplication: model.addInput("×"); break;
             case R.id.BtnDivision: model.addInput("÷"); break;
-            case R.id.BtnEnter: model.evaluate(); break;
+            case R.id.BtnEnter: model.solve(); break;
             case R.id.BtnOpen: model.addInput("("); break;
             case R.id.BtnClose: model.addInput(")"); break;
             case R.id.BtnClear: model.deleteLastChar(); break;

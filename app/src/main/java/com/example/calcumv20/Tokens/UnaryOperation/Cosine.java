@@ -4,8 +4,8 @@ import androidx.annotation.NonNull;
 
 public class Cosine extends UnaryOperation {
     @Override
-    double evaluate(double operand) {
-        return Math.cos(operand);
+    public double evaluate(double operand) {
+        return Math.cos(operand * Math.PI / 180);
     }
 
     @NonNull
