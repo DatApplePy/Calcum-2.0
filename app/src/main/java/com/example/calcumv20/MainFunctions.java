@@ -11,15 +11,18 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.calcumv20.Util.OnButtonPass;
+import com.example.calcumv20.Util.OnLongPressButtonPass;
 
 public class MainFunctions extends Fragment {
 
     private OnButtonPass buttonPasser;
+    private OnLongPressButtonPass longButtonPasser;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         buttonPasser = (OnButtonPass) context;
+        longButtonPasser = (OnLongPressButtonPass) context;
     }
 
     @Override
@@ -50,6 +53,10 @@ public class MainFunctions extends Fragment {
         view.findViewById(R.id.BtnOpen).setOnClickListener(v -> passButtonToHost(R.id.BtnOpen));
         view.findViewById(R.id.BtnClose).setOnClickListener(v -> passButtonToHost(R.id.BtnClose));
         view.findViewById(R.id.BtnClear).setOnClickListener(v -> passButtonToHost(R.id.BtnClear));
+        view.findViewById(R.id.BtnClear).setOnLongClickListener(v -> {
+            longButtonPasser.passLongPressButtonId(R.id.BtnClear);
+            return true;
+        });
         view.findViewById(R.id.BtnSecondaryOperations).setOnClickListener(v -> passButtonToHost(R.id.BtnSecondaryOperations));
     }
 

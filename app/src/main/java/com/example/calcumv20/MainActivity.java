@@ -10,8 +10,9 @@ import android.widget.TextView;
 import com.example.calcumv20.Model.Model;
 import com.example.calcumv20.Util.Observer;
 import com.example.calcumv20.Util.OnButtonPass;
+import com.example.calcumv20.Util.OnLongPressButtonPass;
 
-public class MainActivity extends AppCompatActivity implements OnButtonPass, Observer {
+public class MainActivity extends AppCompatActivity implements OnButtonPass, OnLongPressButtonPass, Observer {
 
     private TextView inputOutputFeedbackTextView;
     private Model model;
@@ -21,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, Obs
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         inputOutputFeedbackTextView = findViewById(R.id.InputOutputView);
         model = new Model();
@@ -55,7 +57,6 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, Obs
             case R.id.BtnSecondaryOperations: getSupportFragmentManager().beginTransaction().
                     replace(R.id.FragView, secondaryFunctions).commit(); break;
 
-            //TODO: fine-tuning input goes to model
             case R.id.BtnSine: model.addInput("sin("); break;
             case R.id.BtnCosine: model.addInput("cos("); break;
             case R.id.BtnTangent: model.addInput("tan("); break;
@@ -64,6 +65,13 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, Obs
             case R.id.BtnLogarithm: model.addInput("log("); break;
             case R.id.BtnBackToMain: getSupportFragmentManager().beginTransaction().
                     replace(R.id.FragView, mainFunctions).commit(); break;
+        }
+    }
+
+    @Override
+    public void passLongPressButtonId(int buttonId) {
+        if(buttonId == R.id.BtnClear) {
+            model.clear();
         }
     }
 

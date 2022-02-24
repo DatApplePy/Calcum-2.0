@@ -55,6 +55,11 @@ public class Model implements Observable {
         }
     }
 
+    public void clear() {
+        expression.clear();
+        notifyObservers();
+    }
+
     public String getOutput() {
         return convertArrayListToString(expression);
     }
