@@ -60,9 +60,11 @@ public class MainActivity extends AppCompatActivity implements OnButtonPass, OnL
             case R.id.BtnSine: model.addInput("sin("); break;
             case R.id.BtnCosine: model.addInput("cos("); break;
             case R.id.BtnTangent: model.addInput("tan("); break;
-            case R.id.BtnExponention: model.addInput("^"); break;
-            case R.id.BtnSqrt: model.addInput("\u221A"); break;
+            case R.id.BtnExponential: model.addInput("^"); break;
+            case R.id.BtnSqrt: model.addInput("√"); break;
             case R.id.BtnLogarithm: model.addInput("log("); break;
+            case R.id.BtnConstantPi: model.addInput("π"); break;
+            case R.id.BtnConstantEuler: model.addInput("e"); break;
             case R.id.BtnBackToMain: getSupportFragmentManager().beginTransaction().
                     replace(R.id.FragView, mainFunctions).commit(); break;
         }

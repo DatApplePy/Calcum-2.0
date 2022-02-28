@@ -15,8 +15,7 @@ public class ReversePolishNotation {
         postfixExpression = new ArrayList<>();
     }
 
-    public ArrayList<Token> convertInfixToPostfix(ArrayList<Token> tokenizedInfixExpression)
-            throws ClassCastException {
+    public ArrayList<Token> convertInfixToPostfix(ArrayList<Token> tokenizedInfixExpression) {
         tokenizedInfixExpression.forEach((t) -> {
             switch (t.getType()) {
                 case OPERAND: postfixExpression.add(t); break;

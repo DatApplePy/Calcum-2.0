@@ -21,21 +21,21 @@ public class Model implements Observable {
     }
 
     public void solve() {
+        Tokenizer tokenizer = new Tokenizer();
+        ReversePolishNotation rpn = new ReversePolishNotation();
+        Evaluator evaluator = new Evaluator();
+        String result;
         try {
-            Tokenizer tokenizer = new Tokenizer();
-            ReversePolishNotation rpn = new ReversePolishNotation();
-            Evaluator evaluator = new Evaluator();
-            String result;
-
             ArrayList<Token> res = tokenizer.tokenize(convertArrayListToString(expression));
             res = rpn.convertInfixToPostfix(res);
             result = evaluator.evaluate(res);
-
             expression = convertStringToArrayList(result);
         } catch (NumberFormatException|ClassCastException|EmptyStackException e) {
+            e.printStackTrace();
             expression.clear();
             expression.add("Syntax error");
         } catch (ArithmeticException e) {
+            e.printStackTrace();
             expression.clear();
             expression.add("Math error");
         }

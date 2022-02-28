@@ -8,7 +8,6 @@ import com.example.calcumv20.Tokens.UnaryOperation.UnaryOperation;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.EmptyStackException;
 import java.util.Locale;
 import java.util.Stack;
 
@@ -22,8 +21,7 @@ public class Evaluator {
         stack = new Stack<>();
     }
 
-    public String evaluate(ArrayList<Token> postfixExpression)
-            throws EmptyStackException, ArithmeticException {
+    public String evaluate(ArrayList<Token> postfixExpression) {
         postfixExpression.forEach((t) -> {
             switch (t.getType()) {
                 case OPERAND: stack.push(t); break;
@@ -42,6 +40,10 @@ public class Evaluator {
                 }
             }
         });
+
+        if (stack.size() != 1) {
+            //TODO: throw exception
+        }
 
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
         df.setMaximumFractionDigits(10);

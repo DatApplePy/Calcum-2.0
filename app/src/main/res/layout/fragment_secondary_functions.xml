@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SecondaryFunctions" >
+    tools:context=".SecondaryFunctions">
 
     <Button
         android:id="@+id/BtnSine"
@@ -16,7 +15,7 @@
         android:text="@string/BtnSine"
         android:textSize="40sp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/BtnExponention"
+        app:layout_constraintBottom_toTopOf="@+id/BtnExponential"
         app:layout_constraintEnd_toStartOf="@id/BtnCosine"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,15 +49,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/BtnExponention"
+        android:id="@+id/BtnExponential"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:text="@string/BtnExponention"
+        android:text="@string/BtnExponential"
         android:textSize="40sp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@id/BtnBackToMain"
+        app:layout_constraintBottom_toTopOf="@+id/BtnBackToMain"
         app:layout_constraintEnd_toStartOf="@id/BtnSqrt"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/BtnSine" />
@@ -72,9 +71,9 @@
         android:text="@string/BtnSqrt"
         android:textSize="40sp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@id/BtnBackToMain"
+        app:layout_constraintBottom_toTopOf="@id/BtnConstantPi"
         app:layout_constraintEnd_toStartOf="@id/BtnLogarithm"
-        app:layout_constraintStart_toEndOf="@+id/BtnExponention"
+        app:layout_constraintStart_toEndOf="@+id/BtnExponential"
         app:layout_constraintTop_toBottomOf="@+id/BtnCosine" />
 
     <Button
@@ -86,7 +85,7 @@
         android:text="@string/BtnLogarithm"
         android:textSize="40sp"
         app:cornerRadius="0dp"
-        app:layout_constraintBottom_toTopOf="@id/BtnBackToMain"
+        app:layout_constraintBottom_toTopOf="@id/BtnConstantEuler"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/BtnSqrt"
         app:layout_constraintTop_toBottomOf="@+id/BtnTangent" />
@@ -101,7 +100,35 @@
         android:textSize="40sp"
         app:cornerRadius="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BtnConstantPi"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/BtnSqrt" />
+        app:layout_constraintTop_toBottomOf="@id/BtnExponential" />
+
+    <Button
+        android:id="@+id/BtnConstantPi"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/BtnConstantPi"
+        android:textSize="40sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/BtnConstantEuler"
+        app:layout_constraintStart_toEndOf="@+id/BtnBackToMain"
+        app:layout_constraintTop_toBottomOf="@+id/BtnSqrt" />
+
+    <Button
+        android:id="@+id/BtnConstantEuler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/BtnConstantEuler"
+        android:textSize="40sp"
+        app:cornerRadius="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/BtnConstantPi"
+        app:layout_constraintTop_toBottomOf="@+id/BtnLogarithm" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,13 +18,15 @@
     <string name="BtnDecimal">.</string>
     <string name="BtnOpen">(</string>
     <string name="BtnClose">)</string>
-    <string name="BtnClear">c</string>
-    <string name="BtnSecondaryOperations">2nd</string>
+    <string name="BtnClear">C</string>
+    <string name="BtnSecondaryOperations">⇄</string>
     <string name="BtnSine">sin</string>
     <string name="BtnCosine">cos</string>
     <string name="BtnTangent">tan</string>
-    <string name="BtnExponention">x<sup>y</sup></string>
-    <string name="BtnSqrt">\u221ax</string>
+    <string name="BtnExponential">x<sup>y</sup></string>
+    <string name="BtnSqrt">√x</string>
     <string name="BtnLogarithm">log</string>
-    <string name="BtnBackToMain">BACK</string>
+    <string name="BtnBackToMain">⇄</string>
+    <string name="BtnConstantPi">π</string>
+    <string name="BtnConstantEuler">e</string>
 </resources>

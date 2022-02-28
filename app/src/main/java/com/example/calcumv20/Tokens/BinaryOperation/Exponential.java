@@ -2,7 +2,7 @@ package com.example.calcumv20.Tokens.BinaryOperation;
 
 import androidx.annotation.NonNull;
 
-public class Exponention extends BinaryOperation {
+public class Exponential extends BinaryOperation {
     @Override
     public int priority() {
         return 3;

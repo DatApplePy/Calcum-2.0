@@ -35,9 +35,11 @@ public class SecondaryFunctions extends Fragment {
         view.findViewById(R.id.BtnSine).setOnClickListener(v -> passButtonToHost(R.id.BtnSine));
         view.findViewById(R.id.BtnCosine).setOnClickListener(v -> passButtonToHost(R.id.BtnCosine));
         view.findViewById(R.id.BtnTangent).setOnClickListener(v -> passButtonToHost(R.id.BtnTangent));
-        view.findViewById(R.id.BtnExponention).setOnClickListener(v -> passButtonToHost(R.id.BtnExponention));
+        view.findViewById(R.id.BtnExponential).setOnClickListener(v -> passButtonToHost(R.id.BtnExponential));
         view.findViewById(R.id.BtnSqrt).setOnClickListener(v -> passButtonToHost(R.id.BtnSqrt));
         view.findViewById(R.id.BtnLogarithm).setOnClickListener(v -> passButtonToHost(R.id.BtnLogarithm));
+        view.findViewById(R.id.BtnConstantPi).setOnClickListener(v -> passButtonToHost(R.id.BtnConstantPi));
+        view.findViewById(R.id.BtnConstantEuler).setOnClickListener(v -> passButtonToHost(R.id.BtnConstantEuler));
         view.findViewById(R.id.BtnBackToMain).setOnClickListener(v -> passButtonToHost(R.id.BtnBackToMain));
     }
 

@@ -252,7 +252,7 @@
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="@string/BtnSecondaryOperations"
-        android:textSize="30sp"
+        android:textSize="40sp"
         app:cornerRadius="0dp"
         app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
