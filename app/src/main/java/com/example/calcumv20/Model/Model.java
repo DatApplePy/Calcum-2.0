@@ -2,6 +2,7 @@ package com.example.calcumv20.Model;
 
 import com.example.calcumv20.Tokens.Token;
 import com.example.calcumv20.Util.Evaluator;
+import com.example.calcumv20.Util.IncorrectStackContentException;
 import com.example.calcumv20.Util.Observable;
 import com.example.calcumv20.Util.Observer;
 import com.example.calcumv20.Util.ReversePolishNotation;
@@ -30,7 +31,8 @@ public class Model implements Observable {
             res = rpn.convertInfixToPostfix(res);
             result = evaluator.evaluate(res);
             expression = convertStringToArrayList(result);
-        } catch (NumberFormatException|ClassCastException|EmptyStackException e) {
+        } catch (NumberFormatException | ClassCastException |
+                EmptyStackException | IncorrectStackContentException e) {
             e.printStackTrace();
             expression.clear();
             expression.add("Syntax error");

@@ -42,7 +42,7 @@ public class Evaluator {
         });
 
         if (stack.size() != 1) {
-            //TODO: throw exception
+            throw new IncorrectStackContentException();
         }
 
         DecimalFormat df = new DecimalFormat("0", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
